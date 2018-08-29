@@ -1,0 +1,32 @@
+testeRealizarLogin ,matricula, senha, matriculaExibida
+,730546383,11111111,730-546383
+,322034,11111111,322034
+,731545646,11111111,731-545646
+,22002,11111111,22002
+,313458,11111111,313458
+,323701,11111111,323701
+
+testeCamposObrigatoriosEmBranco, matricula, senha
+,11111111,
+, ,
+, ,45454545
+testarMatriculaESenhaInvalidos, matricula, senha
+,1624323111123412,1
+,365956907879729247,2
+,23456,1337
+TesteMatriculasIncorreta, matricula, senha
+,16303774,11111111
+,15509999,98765432
+,23456789,15975328
+testarMatriculaInexistente, matricula, senha
+,323,11111111
+,161035,11111111
+,16144444444444,45454545
+testarSenhaIncorreta, matricula, senha
+,323701,11111111
+,1610358,11111111
+,731545646,11111111
+testarCamposInvalidos, matricula, senha
+,123JKDAJF456!@&%78,987IUDS#$!654%j%32
+testarEstouroDeCampoSenha, senha
+,1111111111111111111111111111111111111
