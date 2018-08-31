@@ -20,10 +20,8 @@ public class TesteMatriculaIncorreta extends BaseTest {
 	@Test
 	public void TesteMatriculasIncorreta(@Param (name = "matricula")String matricula,
 										 @Param (name = "senha") String senha){
-		page.setMatricula(matricula);
-		page.setSenha(senha);
-		page.entrar();
-		Assert.assertEquals("×\nMatrícula incorreta!", page.obterMensagemErro());
+	
+		Assert.assertEquals("×\nMatrícula incorreta!", page.testarCampos(matricula, senha).obterMensagemErro());
 	}
 	
 }

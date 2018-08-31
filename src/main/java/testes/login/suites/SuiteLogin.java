@@ -14,11 +14,13 @@ import testes.login.tests.TesteMatriculaESenhaInvalidos;
 import testes.login.tests.TesteMatriculaIncorreta;
 import testes.login.tests.TesteMatriculaInexistente;
 import testes.login.tests.TesteSenhaIncorreta;
+import testes.login.tests.TesteTempoCarregamento;
 
 
 
 @RunWith(Suite.class)
 @SuiteClasses({
+	TesteTempoCarregamento.class,
 	TesteCamposEmBranco.class,
 	TesteCaracteresInvalidos.class,
 	TesteEstouroCampoSenha.class,

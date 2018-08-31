@@ -21,7 +21,8 @@ public class TesteCaracteresInvalidos extends BaseTest {
 	public void testarCamposInvalidos(@Param (name = "matricula")String matricula,
 									  @Param (name = "senha")String senha){
 		
-		Assert.assertEquals(8,page.testarCaracteresInvalidosMatricula(matricula));
-		Assert.assertEquals(8,page.testarCaracteresInvalidosSenha(senha));
+		Assert.assertEquals(8,page.testarCaracteresInvalidosMatricula(matricula).obterTamanhoCampo("matricula"));
+		Assert.assertEquals(8,page.testarCaracteresInvalidosSenha(senha).obterTamanhoCampo("senha"));		
+
 	}	
 }

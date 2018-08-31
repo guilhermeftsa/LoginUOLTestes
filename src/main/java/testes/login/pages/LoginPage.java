@@ -44,32 +44,29 @@ public class LoginPage extends BasePage{
 		return new HomePage(driver);
 	}
 	
-	public LoginPage testarCamposBranco(String matricula, String senha){
+	public LoginPage testarCampos(String matricula, String senha){
 		setMatricula(matricula);
 		setSenha(senha);
-		entrar();
-		
+		entrar();		
 		return  this;
 	}
 	
 	public LoginPage testarCaracteresInvalidosMatricula(String matricula){
-		setMatricula(matricula);		
-		obterValorCampo("matricula").length();
-		
+		setMatricula(matricula);
 		return this;
 	}
 	
 	public LoginPage testarCaracteresInvalidosSenha(String senha){
 		setSenha(senha);
-		obterValorCampo("senha").length();
-		
 		return this;
+	}
+	
+	public int obterTamanhoCampo(String campo){
+		return obterValorCampo(campo).length();
 	}
 	
 	public LoginPage testarEstouroCampoSenha(String senha){
 		setSenha(senha);
-		obterValorCampo("senha").length();
-		
 		return this;
 	}
 	
@@ -77,9 +74,32 @@ public class LoginPage extends BasePage{
 		return obterTexto(By.xpath("//div[@id='alert-login']"));
 	}
 	
-	public void esperarCampoMatricula(){
+	public LoginPage esperarCampo(String campo){
 		WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), 30);
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("matriculaUsuario")));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.id(campo)));
+		return this;
+	}		
+	
+	public String obterMatriculaTratada(String matricula){
+		 if(matricula.length()>7){
+		        String p1 = matricula.substring(0, 3);
+		        String p2 = matricula.substring(3, matricula.length());
+		        return p1+"-"+p2;
+		 }
+		 return matricula;
 	}
+	
+	public boolean testeCarregamentoPagina(long tempoini){
+		long tempofim = System.currentTimeMillis();
+		long tempototal = (tempofim - tempoini);
 		
+		System.out.printf("Carregou em %d milissegundos\n",tempototal);
+		
+		boolean passou = false;
+		
+		if(tempototal < 50) {
+			passou = true;
+		}
+		return passou;
+	}
 }

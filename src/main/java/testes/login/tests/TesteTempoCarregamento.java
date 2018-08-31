@@ -13,16 +13,15 @@ import testes.login.pages.LoginPage;
 
 @RunWith(DataDrivenTestRunner.class)
 @DataLoader(filePaths = { "MassaDadosLogin.csv" }, writeData = false, loaderType = LoaderType.CSV)
-public class TesteMatriculaInexistente extends BaseTest{
-	
+public class TesteTempoCarregamento extends BaseTest {
 	LoginPage page = new LoginPage();
-	
+	long tempocarregamento;
 	
 	@Test
-	public void testarMatriculaInexistente(@Param (name = "matricula")String matricula,
-										   @Param (name = "senha") String senha){
-		
-		Assert.assertEquals("×\nUsuario não cadastrado!", page.testarCampos(matricula, senha).obterMensagemErro());
+	public void testeTempoCarregamentoPagina(@Param (name = "matricula") String matricula, 
+			   								 @Param (name = "senha")String senha){
+		page.login(matricula, senha);
+		tempocarregamento = System.currentTimeMillis();
+		Assert.assertTrue(page.esperarCampo("matriculaUsuario").testeCarregamentoPagina(tempocarregamento));
 	}
-	
 }

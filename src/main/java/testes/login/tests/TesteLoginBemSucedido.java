@@ -18,10 +18,11 @@ import testes.login.pages.LoginPage;
 public class TesteLoginBemSucedido extends BaseTest {
 	HomePage hPage = new HomePage(DriverFactory.getDriver());
 	LoginPage page = new LoginPage();
-	@Test
-	public void testeRealizarLogin(@Param (name = "matricula") String matricula, @Param(name = "senha")String senha,
-								   @Param(name = "matriculaExibida") String matriculaExibida){
 	
-		Assert.assertEquals(matriculaExibida, new LoginPage(DriverFactory.getDriver()).login(matricula, senha).encontrarMatricula());
+	@Test
+	public void testeRealizarLogin(@Param (name = "matricula") String matricula, 
+								   @Param (name = "senha")String senha){		   
+			Assert.assertEquals(page.obterMatriculaTratada(matricula),
+								page.login(matricula, senha).esperarCampoID("matriculaUsuario").encontrarMatricula());
 	}
 }

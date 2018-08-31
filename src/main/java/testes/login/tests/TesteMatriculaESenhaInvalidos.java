@@ -14,17 +14,14 @@ import testes.login.pages.LoginPage;
 @RunWith(DataDrivenTestRunner.class)
 @DataLoader(filePaths = { "MassaDadosLogin.csv" }, writeData = false, loaderType = LoaderType.CSV)
 public class TesteMatriculaESenhaInvalidos extends BaseTest {
-
 	LoginPage page = new LoginPage();
 	
 	
 	@Test
 	public void testarMatriculaESenhaInvalidos(@Param (name = "matricula") String matricula,
 												  @Param (name = "senha") String senha){
-		page.setMatricula(matricula);
-		page.setSenha(senha);
-		page.entrar();
-		Assert.assertEquals("×\nMatrícula ou senha inválida", page.obterMensagemErro());
+		
+		Assert.assertEquals("×\nMatrícula ou senha inválida", page.testarCampos(matricula, senha).obterMensagemErro());
 	}
 	
 }

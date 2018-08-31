@@ -19,6 +19,6 @@ public class TesteEstouroCampoSenha extends BaseTest {
 		
 	@Test
 	public void testarEstouroDeCampoSenha(@Param (name = "senha")String senha){				
-		Assert.assertEquals(8, page.testarEstouroCampoSenha(senha));
+		Assert.assertEquals(8, page.testarEstouroCampoSenha(senha).obterTamanhoCampo("senha"));
 	}
 }

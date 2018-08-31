@@ -9,20 +9,17 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import testes.login.core.BaseTest;
-import testes.login.core.DriverFactory;
-import testes.login.pages.HomePage;
 import testes.login.pages.LoginPage;
 
 @RunWith(DataDrivenTestRunner.class)
 @DataLoader(filePaths = { "MassaDadosLogin.csv" }, writeData = false, loaderType = LoaderType.CSV)
 public class TesteCamposEmBranco extends BaseTest {
-	HomePage hPage = new HomePage(DriverFactory.getDriver());
 	LoginPage page = new LoginPage();	
 	
 	@Test
 	public void testeCamposObrigatoriosEmBranco(@Param(name = "matricula") String matricula, 
 												@Param(name = "senha") String senha){
 		
-		Assert.assertEquals("×\nMatrícula ou senha inválida", page.testarCamposBranco(matricula, senha).obterMensagemErro());
+		Assert.assertEquals("×\nMatrícula ou senha inválida", page.testarCampos(matricula, senha).obterMensagemErro());
 	}
 }
