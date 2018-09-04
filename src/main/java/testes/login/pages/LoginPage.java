@@ -74,9 +74,16 @@ public class LoginPage extends BasePage{
 		return obterTexto(By.xpath("//div[@id='alert-login']"));
 	}
 	
-	public LoginPage esperarCampo(String campo){
+	public LoginPage esperarCampoID(String campo){
 		WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), 30);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.id(campo)));
+		return this;
+	}	
+	
+	
+	public LoginPage esperarCampoBy(By by){
+		WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), 30);
+		wait.until(ExpectedConditions.presenceOfElementLocated(by));
 		return this;
 	}		
 	
@@ -97,7 +104,7 @@ public class LoginPage extends BasePage{
 		
 		boolean passou = false;
 		
-		if(tempototal < 50) {
+		if(tempototal < 25) {
 			passou = true;
 		}
 		return passou;

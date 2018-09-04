@@ -30,11 +30,11 @@ public class BaseTest {
 	
 	@After
 	public void finaliza() throws IOException{
-		TakesScreenshot ss = (TakesScreenshot) DriverFactory.getDriver();
-		File arquivo = ss.getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(arquivo, new File("target"+ File.separator +"screenshot"
-				+ File.separator + testname.getMethodName()+ ".jpg"));		
-				
+//		TakesScreenshot ss = (TakesScreenshot) DriverFactory.getDriver();
+//		File arquivo = ss.getScreenshotAs(OutputType.FILE);
+//		FileUtils.copyFile(arquivo, new File("target"+ File.separator +"screenshot"
+//				+ File.separator + testname.getMethodName()+ ".jpg"));		
+//				
 		if(Propriedades.FECHAR_BROWSER){
 			DriverFactory.KillDriver();
 		}
